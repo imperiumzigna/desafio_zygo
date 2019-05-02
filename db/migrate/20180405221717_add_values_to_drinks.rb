@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddValuesToDrinks < ActiveRecord::Migration[5.1]
   def change
     add_column :drinks, :alcohol_level, :integer

@@ -1,3 +1,25 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: drinks
+#
+#  id              :bigint           not null, primary key
+#  name            :string
+#  description     :string
+#  image_url       :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  alcohol_level   :integer
+#  distilled       :boolean
+#  temperature     :integer
+#  base_ingredient :string
+#  origin          :string
+#  ibu             :integer
+#  drinkware       :string
+#  rating_avg      :decimal(, )
+#
+
 require 'rails_helper'
 
 describe Drink do
