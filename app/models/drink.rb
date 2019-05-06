@@ -21,7 +21,9 @@
 #
 class Drink < ApplicationRecord
   include PgSearch
-  pg_search_scope :search_by_drink, against: %i[name description]
+  pg_search_scope :search_by_name_or_description, against: %i[name description], using: {
+    tsearch: { prefix: true }
+  }
 
   validates :name, :description, :image_url, presence: true
   validates :rating_avg, numericality: {

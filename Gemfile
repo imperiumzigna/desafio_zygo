@@ -24,7 +24,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-gem 'brakeman'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate-bootstrap4'
@@ -48,12 +47,12 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'brakeman'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubycritic', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem "rubycritic", require: false
-  gem 'brakeman'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

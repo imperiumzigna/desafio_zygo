@@ -1,0 +1,3 @@
+$("#all-drinks").hide();
+$("#search-results").html("<%= escape_javascript(render :partial => 'drinks_table') %>");
+$('.pagination a').attr('data-remote', 'true');

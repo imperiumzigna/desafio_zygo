@@ -17,16 +17,19 @@
 //= require_tree .
 
 function ready(event) {
-  $('input[type=radio][name=searchRadio]').change(function() {
-    if (this.value === 'simple') {
-      $('.simple-form').show();
-      $('.advanced-form').hide();
-    }
-    else if (this.value === 'advanced') {
-      $('.simple-form').hide();
-      $('.advanced-form').show();
+  $("input[type=radio][name=searchRadio]").change(function() {
+    if (this.value === "simple") {
+      $(".simple-form").show();
+      $(".advanced-form").hide();
+    } else if (this.value === "advanced") {
+      $(".simple-form").hide();
+      $(".advanced-form").show();
+    } else if (this.value === "recommend") {
+      $(".simple-form").hide();
+      $(".advanced-form").hide();
+      $(".recommend-form").show();
     }
   });
 }
 
-$(document).on('turbolinks:load', ready);
+$(document).on("turbolinks:load", ready);

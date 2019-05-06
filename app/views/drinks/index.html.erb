@@ -12,27 +12,62 @@
       </div>
       <div class="form-check">
         <input class="form-check-input" type="radio" name="searchRadio" id="advancedSearch" value="advanced">
+        <label class="form-check-label" for="advancedSearch">Advanced Search</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="searchRadio" id="recommendSearch" value="recommend">
         <label class="form-check-label" for="advancedSearch">Recommend me ;)</label>
       </div>
     </div>
-
-    <%= form_tag do %>
-      <div class="simple-form">
+    <div class="simple-form">
+      <%= form_tag(root_path, method: :get, remote: true) do %>
+          <div class="simple-form__input">
+            <%= text_field_tag :search, params[:search], class: "form-control form-control-lg", placeholder: "Try a Martini..." %>
+          </div>
+          <div class="simple-form__btn">
+            <button type="submit" class="btn btn-outline-primary btn-lg">Search</button>
+          </div>
+      <% end %>
+    </div>
+  <div class="advanced-form" style="display:none;">
+    <%= form_tag(advanced_path, method: :get, remote: true) do %>
         <div class="simple-form__input">
-          <input class="form-control form-control-lg" type="text" placeholder="Try a Martini..">
+          <%= text_field_tag :advanced_search, params[:advanced_search], class: "form-control form-control-lg", placeholder: "Describe your drink" %>
         </div>
         <div class="simple-form__btn">
           <button type="submit" class="btn btn-outline-primary btn-lg">Search</button>
         </div>
-      </div>
-
-      <div class="advanced-form" style="display:none;">
-        User inputs to search a collection of drinks based on given recommendations.
-      </div>
     <% end %>
   </div>
-    
-  <div class="drinks-list">
+  <div class="recommend-form" style="display:none;">
+    <%= form_tag(recommend_path, method: :get, remote: true) do %>
+        Describe your taste:
+        <hr>
+        <div class="simple-form__input">
+          <label>Alcohol Level:</label>
+          <%= number_field_tag :alcohol_level, nil , within: 0...100, :class => 'form-control form-control-lg' %>
+        </div>
+        <div class="simple-form__input">
+          <label>Bitterness level:</label>
+          <%= number_field_tag :ibu, nil , within: 0...10, :class => 'form-control form-control-lg' %>
+        </div>
+        <div class="simple-form__input">
+          <label>Temperature:</label>
+          <select id="temperature" name="temperature" class="form-control form-control-lg">
+            <option value="0">Extra Cold</option>
+            <option value="1">Cold</option>
+            <option value="2" default>Ambient</option>
+            <option value="3">Warm</option>
+            <option value="4">Hot</option>
+          </select>
+        </div>
+        <div class="simple-form__btn">
+          <button type="submit" class="btn btn-outline-primary btn-lg">Search</button>
+        </div>
+    <% end %>
+    </div>
+  </div>
+  <div id="all-drinks" class="drinks-list">
     <%= will_paginate @drinks, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
     <% @drinks.each do |drink| %>
       <div class="card drink-card">
@@ -44,5 +79,7 @@
       </div>
     <% end %>
     <%= will_paginate @drinks, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+  <div id="search-results" class="drinks-list">
   </div>
 </div>

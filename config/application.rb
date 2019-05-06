@@ -11,7 +11,7 @@ module SumoneDevChallange
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-    
+
     config.autoload_paths << Rails.root.join('lib')
   end
 end
